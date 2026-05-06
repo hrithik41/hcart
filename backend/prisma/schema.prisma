@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model transaction {
+  id                String             @id
+  amount            Int
+  currency          String             @default("INR")
+  status            transaction_status @default(PENDING)
+  razorpayOrderId   String             @unique(map: "Transaction_razorpayOrderId_key")
+  razorpayPaymentId String?            @unique(map: "Transaction_razorpayPaymentId_key")
+  razorpaySignature String?            @unique(map: "Transaction_razorpaySignature_key")
+  provider          String
+  userId            String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime
+  user              user               @relation(fields: [userId], references: [id], map: "Transaction_userId_fkey")
+
+  @@index([userId], map: "Transaction_userId_fkey")
+}
+
+model user {
+  id          String        @id
+  email       String        @unique(map: "User_email_key")
+  name        String?
+  password    String?
+  balance     Int           @default(0)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime
+  transaction transaction[]
+}
+
+model product {
+  product_id String @id
+  product_name String
+  product_description String
+  display_price Float
+  discount_price Float
+  product_quantity Int
+  product_stock Int
+  product_image String
+  product_status product_status @default(AVAILABLE)
+  deleted_at DateTime 
+  updated_at DateTime
+  created_at DateTime @default(now())
+}
+
+enum transaction_status {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum  product_status {
+  AVAILABLE
+  UNAVAILABLE
+}
