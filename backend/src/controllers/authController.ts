@@ -32,8 +32,8 @@ const register = async (req: express.Request, res: express.Response) => {
         return res.status(201).json({ message: "User Created", newUser, accessToken, refreshToken });
     }
     catch (error) {
-        console.log(error);
-        return res.status(500).json({ error: 'Failed to create user' });
+        console.error("Registration error details:", error);
+        return res.status(500).json({ error: 'Failed to create user', details: error instanceof Error ? error.message : "Unknown error" });
     }
 };
 

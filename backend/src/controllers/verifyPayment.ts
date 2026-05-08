@@ -20,6 +20,15 @@ export const verifyPayment = async (req: express.Request, res: express.Response)
         };
 
         if (generated_signature === razorpay_signature) {
+            await prisma.transaction.update({
+                where: { razorpayOrderId: razorpay_order_id },
+                data: {
+                    status: "SUCCESS",
+                    razorpayPaymentId: razorpay_payment_id,
+                    razorpaySignature: razorpay_signature,
+                }
+            });
+
             res.json(paymentDetails);
             
         } else {

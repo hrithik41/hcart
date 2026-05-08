@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { getOrders } from "@/lib/api";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Clock, CheckCircle2, CreditCard, Calendar, Hash, ArrowUpRight, Loader2 } from "lucide-react";
+import { ArrowLeft, Clock, CheckCircle2, CreditCard, Calendar, Hash, ArrowUpRight, Loader2, XCircle } from "lucide-react";
 
 export default function OrdersPage() {
     const [orders, setOrders] = useState<any[]>([]);
@@ -38,9 +38,9 @@ export default function OrdersPage() {
             {/* Header */}
             <nav className="bg-white/80 backdrop-blur-xl border-b border-zinc-200 sticky top-0 z-50">
                 <div className="max-w-5xl mx-auto px-6 h-20 flex justify-between items-center">
-                    <button 
+                    <button
                         onClick={() => router.push('/dashboard')}
-                        className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 font-bold text-sm transition-all group"
+                        className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 font-light text-sm transition-all group"
                     >
                         <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                         Dashboard
@@ -62,7 +62,7 @@ export default function OrdersPage() {
                 </header>
 
                 {error ? (
-                    <div className="bg-red-50 border border-red-100 p-6 rounded-3xl text-red-600 text-sm font-bold uppercase tracking-widest text-center">
+                    <div className="bg-red-50 border border-red-100 p-6 rounded-3xl text-red-600 text-sm font-light uppercase tracking-widest text-center">
                         {error}
                     </div>
                 ) : orders.length === 0 ? (
@@ -70,9 +70,9 @@ export default function OrdersPage() {
                         <div className="w-20 h-20 bg-zinc-50 rounded-3xl flex items-center justify-center mx-auto mb-8">
                             <CreditCard size={40} className="text-zinc-300" />
                         </div>
-                        <h2 className="text-2xl font-black mb-4 uppercase tracking-tight text-zinc-900">No Records</h2>
+                        <h2 className="text-4xl font-light mb-4 uppercase tracking-tight text-zinc-900">No Records</h2>
                         <p className="text-zinc-500 font-medium mb-10 max-w-xs mx-auto">You haven't made any transactions yet.</p>
-                        <button 
+                        <button
                             onClick={() => router.push('/dashboard')}
                             className="bg-zinc-900 text-white px-10 py-4 rounded-2xl font-black text-xs tracking-widest uppercase hover:scale-105 transition-transform"
                         >
@@ -96,19 +96,19 @@ export default function OrdersPage() {
                                                 {order.razorpayOrderId}
                                             </span>
                                         </div>
-                                        
+
                                         <div>
                                             <div className="flex items-baseline gap-1 mb-1">
-                                                <span className="text-sm font-bold text-zinc-900">₹</span>
+                                                <span className="text-sm font-light text-zinc-900">₹</span>
                                                 <span className="text-3xl font-black tracking-tighter text-zinc-900">
                                                     {order.amount}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-bold uppercase tracking-widest">
+                                            <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-light uppercase tracking-widest">
                                                 <Calendar size={12} />
-                                                {new Date(order.createdAt).toLocaleDateString('en-US', { 
-                                                    month: 'long', 
-                                                    day: 'numeric', 
+                                                {new Date(order.createdAt).toLocaleDateString('en-US', {
+                                                    month: 'long',
+                                                    day: 'numeric',
                                                     year: 'numeric',
                                                     hour: '2-digit',
                                                     minute: '2-digit'
@@ -118,15 +118,22 @@ export default function OrdersPage() {
                                     </div>
 
                                     <div className="flex flex-col items-end gap-3 shrink-0">
-                                        <div className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest border transition-all duration-500 ${
-                                            order.status === 'SUCCESS' 
-                                                ? 'bg-emerald-50 text-emerald-600 border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500' 
-                                                : 'bg-amber-50 text-amber-600 border-amber-100 animate-pulse'
-                                        }`}>
+                                        <div className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[10px] font-light uppercase tracking-widest border transition-all duration-500 ${
+                                            order.status === 'SUCCESS'
+                                                ? 'bg-emerald-50 text-emerald-600 border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500'
+                                                : order.status === 'FAILED'
+                                                    ? 'bg-red-50 text-red-600 border-red-100 group-hover:bg-red-500 group-hover:text-white group-hover:border-red-500'
+                                                    : 'bg-amber-50 text-amber-600 border-amber-100 animate-pulse'
+                                            }`}>
                                             {order.status === 'SUCCESS' ? (
                                                 <>
                                                     <CheckCircle2 size={14} />
-                                                    Settled
+                                                    Success
+                                                </>
+                                            ) : order.status === 'FAILED' ? (
+                                                <>
+                                                    <XCircle size={14} />
+                                                    Failed
                                                 </>
                                             ) : (
                                                 <>
@@ -151,7 +158,7 @@ export default function OrdersPage() {
                 )}
 
                 <footer className="mt-20 text-center py-10 border-t border-zinc-100">
-                    <p className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.3em]">
+                    <p className="text-[10px] font-light text-zinc-300 uppercase tracking-[0.3em]">
                         Financely &copy; 2026. Precision Financial Engineering.
                     </p>
                 </footer>

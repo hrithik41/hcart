@@ -122,3 +122,8 @@ export const getOrders = async () => {
     const response = await axiosInstance.get('/orders/history');
     return response.data;
 };
+
+export const markPaymentFailed = async (data: { orderId: string }) => {
+    const response = await axiosInstance.post('/payment-failed', data);
+    return response.data;
+};

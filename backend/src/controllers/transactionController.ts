@@ -15,3 +15,18 @@ export const getOrderHistory = async (req: Request, res: Response) => {
         res.status(500).json({ error: "Failed to fetch order history" });
     }
 };
+
+export const markPaymentFailed = async (req: Request, res: Response) => {
+    try {
+        const { orderId } = req.body;
+
+        await prisma.transaction.update({
+            where: { razorpayOrderId: orderId },
+            data: { status: "FAILED" }
+        });
+
+        res.status(200).json({ message: "Payment marked as failed" });
+    } catch (error) {
+        res.status(500).json({ error: "Failed to update payment status" });
+    }
+};
