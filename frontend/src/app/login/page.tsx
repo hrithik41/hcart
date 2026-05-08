@@ -17,10 +17,10 @@ export default function Login() {
         e.preventDefault();
         setError('');
         setLoading(true);
-        
+
         try {
             const data = await login({ email, password });
-            
+
             if (typeof window !== 'undefined') {
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);
@@ -67,13 +67,13 @@ export default function Login() {
                                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-300 group-focus-within:text-zinc-900 transition-colors">
                                     <Mail size={18} strokeWidth={2.5} />
                                 </div>
-                                <input 
-                                    type="email" 
+                                <input
+                                    type="email"
                                     required
-                                    className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl text-sm font-bold text-zinc-900 focus:ring-4 focus:ring-zinc-900/5 focus:border-zinc-900 focus:bg-white outline-none transition-all placeholder:text-zinc-300"
-                                    placeholder="your@email.com" 
-                                    value={email} 
-                                    onChange={(e) => setEmail(e.target.value)} 
+                                    className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl text-sm font-light text-zinc-900 focus:ring-4 focus:ring-zinc-900/5 focus:border-zinc-900 focus:bg-white outline-none transition-all placeholder:text-zinc-300"
+                                    placeholder="your@email.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -84,21 +84,21 @@ export default function Login() {
                                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-300 group-focus-within:text-zinc-900 transition-colors">
                                     <Lock size={18} strokeWidth={2.5} />
                                 </div>
-                                <input 
-                                    type="password" 
+                                <input
+                                    type="password"
                                     required
-                                    className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl text-sm font-bold text-zinc-900 focus:ring-4 focus:ring-zinc-900/5 focus:border-zinc-900 focus:bg-white outline-none transition-all placeholder:text-zinc-300"
-                                    placeholder="••••••••" 
-                                    value={password} 
-                                    onChange={(e) => setPassword(e.target.value)} 
+                                    className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl text-sm font-light text-zinc-900 focus:ring-4 focus:ring-zinc-900/5 focus:border-zinc-900 focus:bg-white outline-none transition-all placeholder:text-zinc-300"
+                                    placeholder="••••••••"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                         </div>
 
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             disabled={loading}
-                            className="w-full bg-zinc-900 hover:bg-zinc-800 text-white text-[11px] font-black uppercase tracking-[0.3em] py-5 rounded-2xl transition-all active:scale-[0.98] disabled:opacity-50 mt-4 shadow-xl shadow-zinc-200 flex items-center justify-center gap-3"
+                            className="w-full bg-zinc-900 hover:bg-zinc-800 text-white text-[11px] font-light uppercase tracking-[0.3em] py-5 rounded-2xl transition-all active:scale-[0.98] disabled:opacity-50 mt-4 shadow-xl shadow-zinc-200 flex items-center justify-center gap-3"
                         >
                             {loading ? (
                                 <Loader2 className="animate-spin" size={18} />

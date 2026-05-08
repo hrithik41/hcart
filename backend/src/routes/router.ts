@@ -7,7 +7,7 @@ import { verifyPayment } from '../controllers/verifyPayment';
 import * as productController from '../controllers/productController';
 import { webhook } from '../controllers/webhookController';
 import * as cartController from '../controllers/cartController';
-import { getOrderHistory } from '../controllers/transactionController';
+import { getOrderHistory, markPaymentFailed } from '../controllers/transactionController';
 
 const router = express.Router();
 
@@ -20,6 +20,7 @@ router.post('/verify-payment', authMiddleware, verifyPayment);
 router.post('/products', authMiddleware, productController.getProducts);
 router.post('/webhook', webhook);
 router.get('/orders/history', authMiddleware, getOrderHistory);
+router.post('/payment-failed', authMiddleware, markPaymentFailed);
 
 router.post('/cart/add', authMiddleware, cartController.addToCart);
 router.get('/cart/get', authMiddleware, cartController.getCart);

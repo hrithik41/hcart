@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getCart, removeFromCart, addToCart, createOrder, verifyPayment } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { Trash2, Plus, Minus, ArrowLeft, CreditCard, ShoppingBag, Loader2 } from "lucide-react";
-import { checkoutCart } from "@/lib/api";
+import { checkoutCart, clearCart, markPaymentFailed } from "@/lib/api";
 
 export default function CartPage() {
     const [cart, setCart] = useState<any[]>([]);
@@ -63,13 +63,20 @@ export default function CartPage() {
                 description: "Premium Product Purchase",
                 image: "/logo.png",
                 order_id: order_id,
-                handler: function (response: any) {
-                    verifyPayment({
-                        razorpay_order_id: response.razorpay_order_id,
-                        razorpay_payment_id: response.razorpay_payment_id,
-                        razorpay_signature: response.razorpay_signature,
-                        amount: amount / 100
-                    });
+                handler: async function (response: any) {
+                    try {
+                        await verifyPayment({
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_signature: response.razorpay_signature,
+                            amount: amount / 100
+                        });
+                        await clearCart();
+                        setCart([]);
+                        router.push('/dashboard');
+                    } catch (error) {
+                        alert("Payment verification failed");
+                    }
                 },
                 prefill: {
                     name: "User Name",
@@ -83,6 +90,14 @@ export default function CartPage() {
                 }
             };
             const rzp = new (window as any).Razorpay(options);
+            rzp.on('payment.failed', async function (response: any) {
+                try {
+                    await markPaymentFailed({ orderId: response.error.metadata.order_id });
+                } catch (e) {
+                    console.error("Failed to mark payment as failed", e);
+                }
+                alert("Payment Failed");
+            });
             rzp.open();
         } catch (error) {
             alert("Checkout failed");
@@ -106,7 +121,7 @@ export default function CartPage() {
                 <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
                     <button 
                         onClick={() => router.push('/dashboard')}
-                        className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 font-bold text-sm transition-all group"
+                        className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 font-light text-sm transition-all group"
                     >
                         <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                         Back to Shop
@@ -129,7 +144,7 @@ export default function CartPage() {
                         <div className="w-20 h-20 bg-zinc-50 rounded-3xl flex items-center justify-center mx-auto mb-8">
                             <ShoppingBag size={40} className="text-zinc-300" />
                         </div>
-                        <h2 className="text-2xl font-black mb-4 uppercase tracking-tight text-zinc-900">Empty Bag</h2>
+                        <h2 className="text-4xl font-light mb-4 uppercase tracking-tight text-zinc-900">Empty Bag</h2>
                         <p className="text-zinc-500 font-medium mb-10 max-w-xs mx-auto">Looks like you haven't added any premium items yet.</p>
                         <button 
                             onClick={() => router.push('/dashboard')}
@@ -178,8 +193,8 @@ export default function CartPage() {
                                                 </button>
                                             </div>
                                             <div className="text-right font-black">
-                                                <span className="text-[10px] text-zinc-400 block mb-1 uppercase tracking-widest">Total Price</span>
-                                                <span className="text-2xl tracking-tighter text-zinc-900">₹{item.product.discount_price * item.cart_quantity}</span>
+                                                <span className="text-[10px] font-light text-zinc-400 block mb-1 uppercase tracking-widest">Total Price</span>
+                                                <span className="text-4xl font-light tracking-tighter text-zinc-900">₹{item.product.discount_price * item.cart_quantity}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -189,25 +204,25 @@ export default function CartPage() {
 
                         {/* Summary Section */}
                         <div className="bg-zinc-900 rounded-[2.5rem] p-10 text-white sticky top-28 shadow-2xl shadow-zinc-200">
-                            <h2 className="text-2xl font-black mb-10 tracking-tighter uppercase">Order Summary</h2>
+                            <h2 className="text-4xl font-light mb-10 tracking-tighter uppercase">Order Summary</h2>
                             <div className="space-y-6 mb-10">
-                                <div className="flex justify-between text-zinc-400 font-bold text-xs uppercase tracking-widest">
+                                <div className="flex justify-between text-zinc-400 font-light text-xs uppercase tracking-widest">
                                     <span>Subtotal</span>
                                     <span className="text-white tabular-nums">₹{subtotal}</span>
                                 </div>
-                                <div className="flex justify-between text-zinc-400 font-bold text-xs uppercase tracking-widest">
+                                <div className="flex justify-between text-zinc-400 font-light text-xs uppercase tracking-widest">
                                     <span>Shipping Charge</span>
                                     <span className="text-emerald-400 font-black">FREE</span>
                                 </div>
-                                <div className="flex justify-between text-zinc-400 font-bold text-xs uppercase tracking-widest">
+                                <div className="flex justify-between text-zinc-400 font-light text-xs uppercase tracking-widest">
                                     <span>Estimated Tax</span>
                                     <span className="text-white tabular-nums">₹0</span>
                                 </div>
                                 <div className="h-px bg-zinc-800 my-8"></div>
                                 <div className="flex justify-between items-end">
                                     <div>
-                                        <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-1">Grand Total</p>
-                                        <p className="text-4xl font-black tracking-tighter tabular-nums">₹{subtotal}</p>
+                                        <p className="text-[10px] font-light text-zinc-500 uppercase tracking-[0.2em] mb-1">Grand Total</p>
+                                        <p className="text-4xl font-light tracking-tighter tabular-nums">₹{subtotal}</p>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +242,7 @@ export default function CartPage() {
                             </button>
                             <div className="flex items-center justify-center gap-2 mt-8 opacity-50">
                                 <ShoppingBag size={12} />
-                                <p className="text-[9px] font-bold uppercase tracking-[0.2em]">
+                                <p className="text-[9px] font-light uppercase tracking-[0.2em]">
                                     Secure & Encrypted Checkout
                                 </p>
                             </div>

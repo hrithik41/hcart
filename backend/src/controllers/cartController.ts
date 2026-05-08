@@ -89,12 +89,9 @@ export const removeFromCart = async (req: Request, res: Response) => {
 export const clearCart = async (req: Request, res: Response) => {
     try {
         const userId = (req as any).userId;
-        await prisma.cart.updateMany({
+        await prisma.cart.deleteMany({
             where: {
                 fk_user_id: userId,
-            },
-            data: {
-                is_cart_cleared: true
             }
         });
         res.status(200).json({ message: "Cart cleared" });

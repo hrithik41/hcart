@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { dashboard, createOrder, verifyPayment, getProducts, getCart } from "@/lib/api";
+import { dashboard, createOrder, verifyPayment, getProducts, getCart, markPaymentFailed } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { ShoppingBag, LogOut, ArrowRight, ShieldCheck, Zap, Activity } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
@@ -96,6 +96,14 @@ export default function Dashboard() {
             };
 
             const rzp = new (window as any).Razorpay(options);
+            rzp.on('payment.failed', async function (response: any) {
+                try {
+                    await markPaymentFailed({ orderId: response.error.metadata.order_id });
+                } catch (e) {
+                    console.error("Failed to mark payment as failed", e);
+                }
+                alert("Payment Failed");
+            });
             rzp.open();
         } catch (error) {
             console.error("Payment failed:", error);
@@ -122,7 +130,7 @@ export default function Dashboard() {
                         {/* <div className="w-10 h-10 bg-zinc-900 rounded-2xl flex items-center justify-center shadow-xl shadow-zinc-200 rotate-3 group hover:rotate-0 transition-transform duration-500 cursor-pointer">
                             <div className="w-4 h-4 bg-white rounded-sm rotate-45"></div>
                         </div> */}
-                        <span className="font-black text-2xl tracking-tighter uppercase">Financely</span>
+                        <span className="text-4xl font-light tracking-tighter uppercase">Financely</span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -140,7 +148,7 @@ export default function Dashboard() {
 
                         <button
                             onClick={handleLogout}
-                            className="flex items-center gap-2 pl-4 pr-5 py-2.5 text-[11px] font-black uppercase tracking-widest text-zinc-500 hover:text-red-600 hover:bg-red-50 rounded-2xl transition-all group"
+                            className="flex items-center gap-2 pl-4 pr-5 py-2.5 text-[11px] font-light uppercase tracking-widest text-zinc-500 hover:text-red-600 hover:bg-red-50 rounded-2xl transition-all group"
                         >
                             <LogOut size={16} strokeWidth={2.5} className="group-hover:-translate-x-1 transition-transform" />
                             <span>Sign Out</span>
@@ -151,7 +159,7 @@ export default function Dashboard() {
 
             <main className="max-w-7xl mx-auto px-6 py-16">
                 <header className="mb-20">
-                    <div className="inline-flex items-center gap-2 bg-zinc-900 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
+                    <div className="inline-flex items-center gap-2 bg-zinc-900 text-white px-4 py-1.5 rounded-full text-[10px] font-light uppercase tracking-widest mb-6">
                         <Zap size={12} fill="currentColor" />
                         Live Dashboard
                     </div>
@@ -176,10 +184,10 @@ export default function Dashboard() {
                                 <div className="p-3 bg-zinc-50 rounded-2xl group-hover:bg-zinc-900 group-hover:text-white transition-colors duration-500">
                                     {stat.icon}
                                 </div>
-                                <span className="text-[10px] font-black text-zinc-300 uppercase tracking-widest">{stat.label}</span>
+                                <span className="text-[10px] font-light text-zinc-300 uppercase tracking-widest">{stat.label}</span>
                             </div>
                             <p className="text-xl font-black text-zinc-900 truncate mb-1 tracking-tight">{stat.val}</p>
-                            <p className="text-xs font-bold text-zinc-400 uppercase tracking-tighter">{stat.sub}</p>
+                            <p className="text-xs font-light text-zinc-400 uppercase tracking-tighter">{stat.sub}</p>
                         </div>
                     ))}
                 </div>
@@ -187,8 +195,8 @@ export default function Dashboard() {
                 <section className="mb-32">
                     <div className="flex justify-between items-end mb-12">
                         <div>
-                            <h2 className="text-4xl font-black text-zinc-900 tracking-tighter mb-2 uppercase">Marketplace</h2>
-                            <p className="text-zinc-400 font-bold text-sm uppercase tracking-widest">Premium Selection</p>
+                            <h2 className="text-4xl font-light  text-zinc-900 tracking-tighter mb-2 uppercase">Marketplace</h2>
+                            <p className="text-zinc-400 font-light text-sm uppercase tracking-widest">Premium Selection</p>
                         </div>
                         <div className="flex items-center gap-3">
                             <div className="h-[2px] w-12 bg-zinc-900"></div>
@@ -208,7 +216,7 @@ export default function Dashboard() {
                     <div className="relative bg-zinc-900 text-white p-16 rounded-[3rem] overflow-hidden border border-zinc-800">
                         <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
                             <div className="max-w-md">
-                                <h2 className="text-4xl font-black tracking-tighter mb-4 leading-none">Ready to check your history?</h2>
+                                <h2 className="text-4xl font-light tracking-tighter mb-4 leading-none">Ready to check your history?</h2>
                                 <p className="text-zinc-400 font-medium leading-relaxed">View all your previous transactions and order status in one secure place.</p>
                             </div>
                             <button
@@ -226,7 +234,7 @@ export default function Dashboard() {
             </main>
 
             <footer className="max-w-7xl mx-auto px-6 py-20 border-t border-zinc-200 text-center">
-                <p className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.3em]">
+                <p className="text-[10px] font-light text-zinc-300 uppercase tracking-[0.3em]">
                     &copy; 2026 Financely Inc. Built with Precision.
                 </p>
             </footer>
