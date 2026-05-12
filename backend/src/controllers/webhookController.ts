@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import prisma from '../lib/prisma';
 
 export const webhook = async (req: Request, res: Response) => {
+    console.log("Webhook Here!!!")
 
     const WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET;
     const signature = req.headers['x-razorpay-signature'];
