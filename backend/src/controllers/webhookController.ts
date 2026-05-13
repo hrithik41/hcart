@@ -23,7 +23,7 @@ export const webhook = async (req: Request, res: Response) => {
                     razorpayOrderId: orderId,
                 },
                 data: {
-                    amount: payment.amount,
+                    amount: payment.amount / 100,
                     razorpayOrderId: orderId,
                     razorpayPaymentId: payment.id,
                     razorpaySignature: signature as string,
