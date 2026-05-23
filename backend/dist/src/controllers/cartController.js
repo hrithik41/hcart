@@ -10,18 +10,20 @@ const addToCart = async (req, res) => {
     try {
         const { productId, quantity } = req.body;
         const userId = req.userId;
-        const product = await prisma_1.default.product.findUnique({ where: { product_id: productId } });
+        const [product, existingItem] = await Promise.all([
+            prisma_1.default.product.findUnique({ where: { product_id: productId } }),
+            prisma_1.default.cart.findUnique({
+                where: {
+                    fk_user_id_fk_product_id: {
+                        fk_user_id: userId,
+                        fk_product_id: productId
+                    }
+                }
+            })
+        ]);
         if (!product) {
             return res.status(404).json({ error: "Product not found" });
         }
-        const existingItem = await prisma_1.default.cart.findUnique({
-            where: {
-                fk_user_id_fk_product_id: {
-                    fk_user_id: userId,
-                    fk_product_id: productId
-                }
-            }
-        });
         if (existingItem) {
             const newQuantity = existingItem.cart_quantity + quantity;
             if (newQuantity <= 0) {

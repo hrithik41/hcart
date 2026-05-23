@@ -14,8 +14,13 @@ export const authMiddleware = async (req: express.Request, res: express.Response
         const token = authHeader.split(' ')[1];
         const decodedToken = verifyAccessRefreshToken(token, "access") as any;
 
-        await prisma.user.findUnique({ where: { id: decodedToken.id } });
+        const user = await prisma.user.findUnique({ where: { id: decodedToken.id } });
+        if (!user) {
+            return res.status(401).json({ error: 'User no longer exists' });
+        }
+
         (req as any).userId = decodedToken.id;
+        (req as any).user = user;
         next();
 
     } catch (error) {
