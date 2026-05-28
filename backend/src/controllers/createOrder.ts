@@ -13,7 +13,7 @@ export const createOrder = async (req: Request, res: Response) => {
         });
 
         if (!product) {
-            return res.status(404).json({ message: "Product not found" });
+            return res.status(404).json({ message: "Product details not found" });
         }
 
         const amount = product.discount_price;
