@@ -2,6 +2,7 @@ import express from 'express';
 import prisma from '../lib/prisma';
 import bcrypt from 'bcrypt';
 import { verifyAccessRefreshToken, generateTokens } from '../utils/jwt';
+import { generateOTP } from '../utils/otp';
 
 const register = async (req: express.Request, res: express.Response) => {
     try {
@@ -12,19 +13,24 @@ const register = async (req: express.Request, res: express.Response) => {
         }
         const existingUser = await prisma.user.findUnique({ where: { email } });
         if (existingUser) {
+            await prisma.user.delete({ where: { email: "test@gmail.com" } })
             return res.status(400).json({ error: 'User already exists' });
         }
 
         const hash = await bcrypt.hash(password, 10);
+        const otp = await generateOTP();
         const newUser = await prisma.user.create({
             data: {
                 name: name,
                 email: email,
                 password: hash,
+                otp: Number(otp),
                 updatedAt: new Date(),
                 createdAt: new Date(),
             }
         });
+
+        console.log("User Registered", JSON.stringify(newUser, null, 2));
 
         const [accessToken, refreshToken] = generateTokens(newUser.id);
 

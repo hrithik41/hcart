@@ -8,8 +8,9 @@ export default function Home() {
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
-          width={100}
-          height={20}
+          width={16}
+          height={16}
+          style={{ height: 'auto'}}
           priority
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
