@@ -1,9 +1,7 @@
 import nodemailer from "nodemailer";
 import dns from "dns";
 
-const ipv4Lookup = (hostname: string, options: any, callback: any) => {
-    return dns.lookup(hostname, { ...options, family: 4 }, callback);
-};
+dns.setDefaultResultOrder("ipv4first");
 
 export const sendOtpMail = async (email: string, otp: string) => {
     const transporter = nodemailer.createTransport({
@@ -14,7 +12,6 @@ export const sendOtpMail = async (email: string, otp: string) => {
             user: process.env.EMAIL,
             pass: process.env.PASSWORD
         },
-        lookup: ipv4Lookup,
     } as any);
 
     // Premium HTML email template

@@ -2,7 +2,7 @@ import express from 'express';
 import prisma from '../lib/prisma';
 import bcrypt from 'bcrypt';
 import redis from '../lib/redis';
-import { sendOtpMail } from '../utils/sendMail';
+import { sendOTPEmail } from '../utils/email';
 import { verifyAccessRefreshToken, generateTokens } from '../utils/jwt';
 import { generateOTP, hashOTP, verifyHashedOTP } from '../utils/otp';
 
@@ -47,7 +47,7 @@ const register = async (req: express.Request, res: express.Response) => {
         }
         console.log("User Registered", JSON.stringify(newUser, null, 2));
         console.log(`The OTP IS ${otp}`);
-        await sendOtpMail(email, otp);
+        await sendOTPEmail(email, otp);
         // const [accessToken, refreshToken] = generateTokens(newUser.id);
 
         return res.status(201).json({ message: "User Created", newUser });
