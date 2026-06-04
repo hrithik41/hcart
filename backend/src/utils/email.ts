@@ -9,19 +9,61 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOTPEmail = async (toEmail: string, otp: string): Promise<boolean> => {
     try {
-        await resend.emails.send({
-            // On the free tier, Resend requires you to send FROM "onboarding@resend.dev"
-            from: 'onboarding@resend.dev',
-            to: toEmail,
-            subject: 'Your Access Verification Code',
-            html: `
-                <div style="font-family: sans-serif; padding: 25px; border: 1px solid #e4e4e7; max-width: 400px; border-radius: 12px; background-color: #ffffff;">
-                    <h2 style="color: #18181b; margin-top: 0;">Verify Your Account</h2>
-                    <p style="color: #71717a; font-size: 14px;">Enter the following security code to authenticate your profile:</p>
-                    <h1 style="font-size: 36px; letter-spacing: 6px; color: #09090b; margin: 24px 0; font-family: monospace;">${otp}</h1>
-                    <p style="font-size: 11px; color: #a1a1aa; margin-bottom: 0;">This code is active for 5 minutes.</p>
+        // Premium HTML email template
+        const htmlTemplate = `
+            <div style="background-color: #fafafa; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; text-align: center;">
+                <div style="max-width: 440px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e4e4e7; border-radius: 24px; padding: 40px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);">
+                    
+                    <!-- Styled Logo Header -->
+                    <div style="margin-bottom: 32px;">
+                        <!-- Professional Lock PNG Icon -->
+                        <img 
+                            src="https://img.icons8.com/ios-filled/100/09090b/lock.png" 
+                            width="44" 
+                            height="44" 
+                            alt="Security Lock" 
+                            style="display: block; margin: 0 auto 16px auto;" 
+                        />
+                        <h2 style="color: #09090b; font-size: 20px; font-weight: 600; margin: 0; text-transform: uppercase; letter-spacing: 0.05em;">Verify Access</h2>
+                        <p style="color: #71717a; font-size: 12px; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 0.1em;">Secure Authentication Code</p>
+                    </div>
+
+                    <!-- Main Body -->
+                    <div style="border-top: 1px solid #f4f4f5; border-bottom: 1px solid #f4f4f5; padding: 24px 0; margin-bottom: 24px;">
+                        <p style="color: #3f3f46; font-size: 14px; line-height: 1.5; margin: 0 0 20px 0;">
+                            Use the secure, one-time verification code below to authorize your session. 
+                        </p>
+                        
+                        <!-- Monospaced Code Box -->
+                        <div style="background-color: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 16px; padding: 20px; text-align: center; letter-spacing: 12px; font-family: 'Courier New', Courier, monospace; font-size: 36px; font-weight: bold; color: #09090b; margin: 10px 0;">
+                            ${otp}
+                        </div>
+                        
+                        <p style="color: #71717a; font-size: 11px; margin: 16px 0 0 0;">
+                            This code is highly confidential and will expire in <strong>5 minutes</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Footer / Safety warning -->
+                    <div>
+                        <p style="color: #a1a1aa; font-size: 10px; line-height: 1.4; margin: 0; text-transform: uppercase; letter-spacing: 0.05em;">
+                            If you did not request this authorization code, you can safely ignore this email or update your credentials.
+                        </p>
+                    </div>
                 </div>
-            `
+                
+                <!-- Small Outer Footer -->
+                <p style="color: #d4d4d8; font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; margin-top: 24px;">
+                    Encryption Grade Security
+                </p>
+            </div>
+        `;
+
+        await resend.emails.send({
+            from: 'Authentication Services <onboarding@resend.dev>',
+            to: toEmail,
+            subject: "Verification Code from Hrithik", // Cleaned up subject line
+            html: htmlTemplate
         });
         return true;
     } catch (error) {
