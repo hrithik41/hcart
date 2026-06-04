@@ -12,6 +12,7 @@ import { getOrderHistory, markPaymentFailed, refundPayment } from '../controller
 const router = express.Router();
 
 router.post('/register', authController.register);
+router.post('/verify-otp', authController.verifyOtp);
 router.post('/login', authController.login);
 router.post('/refresh-token', authController.refreshAccessToken);
 router.post('/dashboard', authMiddleware, dashboard);
