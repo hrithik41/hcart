@@ -138,3 +138,8 @@ export const refundPayment = async (data: { orderId: string }) => {
     const response = await axiosInstance.post('/refund-payment', data);
     return response.data;
 };
+
+export const submitContactForm = async (data: { name: string; email: string; message: string }) => {
+    const response = await axiosInstance.post('/contact', data);
+    return response.data;
+};
