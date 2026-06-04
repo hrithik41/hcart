@@ -5,7 +5,9 @@ dns.setDefaultResultOrder("ipv4first");
 
 export const sendOtpMail = async (email: string, otp: string) => {
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
         auth: {
             user: process.env.EMAIL,
             pass: process.env.PASSWORD
@@ -20,7 +22,7 @@ export const sendOtpMail = async (email: string, otp: string) => {
                 <!-- Styled Logo Header -->
                 <div style="margin-bottom: 32px;">
                     <!--<div style="width: 48px; height: 48px; background-color: #09090b; border-radius: 16px; margin: 0 auto 16px auto; display: flex; align-items: center; justify-content: center;">
-                        <span style="color: #ffffff; font-size: 20px; font-weight: bold; line-height: 48px;">🔑</span>
+                        <span style="color: #ffffff; font-size: 20px; font-weight: bold; line-height: 48px;"></span>
                     </div>-->
                     <h2 style="color: #09090b; font-size: 20px; font-weight: 600; margin: 0; text-transform: uppercase; letter-spacing: 0.05em;">Verify Access</h2>
                     <p style="color: #71717a; font-size: 12px; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 0.1em;">Secure Authentication Code</p>
@@ -60,7 +62,7 @@ export const sendOtpMail = async (email: string, otp: string) => {
     const mailOptions = {
         from: `"Authentication Services" <${process.env.EMAIL}>`, // Adds a friendly sender name
         to: email,
-        subject: `🔑 ${otp} is your verification code`, // Puts the OTP in the subject line (standard practice for fast-reading notifications)
+        subject: "Verification COde from Hrithik", // Puts the OTP in the subject line (standard practice for fast-reading notifications)
         html: htmlTemplate
     };
 
