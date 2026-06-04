@@ -29,13 +29,10 @@ model user {
   email       String        @unique(map: "User_email_key")
   name        String?
   password    String?
-  token       String?
-  otp         Int?
   isVerified  Boolean       @default(false)
   role        user_role     @default(USER)
   isActive    Boolean       @default(true)
   isDeleted   Boolean       @default(false)
-  balance     Int           @default(0)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime
   transaction transaction[]

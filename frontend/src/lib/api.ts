@@ -63,6 +63,12 @@ export const register = async (data: any) => {
     return response.data;
 };
 
+export const verifyOtp = async (data: { email: string; otp: string }) => {
+    const response = await axiosInstance.post('/verify-otp', data);
+    return response.data;
+};
+
+
 export const login = async (data: any) => {
     const response = await axiosInstance.post('/login', data);
     return response.data;
