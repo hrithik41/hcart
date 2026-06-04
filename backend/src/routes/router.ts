@@ -8,6 +8,7 @@ import * as productController from '../controllers/productController';
 import { webhook } from '../controllers/webhookController';
 import * as cartController from '../controllers/cartController';
 import { getOrderHistory, markPaymentFailed, refundPayment } from '../controllers/transactionController';
+import { handleContactSubmit } from '../controllers/contactController';
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.post('/webhook', webhook);
 router.get('/orders/history', authMiddleware, getOrderHistory);
 router.post('/payment-failed', authMiddleware, markPaymentFailed);
 router.post('/refund-payment', authMiddleware, refundPayment);
+router.post('/contact', handleContactSubmit);
 
 router.post('/cart/add', authMiddleware, cartController.addToCart);
 router.get('/cart/get', authMiddleware, cartController.getCart);

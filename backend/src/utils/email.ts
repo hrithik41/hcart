@@ -71,3 +71,44 @@ export const sendOTPEmail = async (toEmail: string, otp: string): Promise<boolea
         return false;
     }
 };
+
+export const sendContactEmail = async (senderName: string, senderEmail: string, message: string): Promise<boolean> => {
+    try {
+        const htmlTemplate = `
+            <div style="background-color: #fafafa; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+                <div style="max-width: 500px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e4e4e7; border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);">
+                    
+                    <h2 style="color: #09090b; font-size: 18px; font-weight: 600; margin: 0 0 16px 0; border-bottom: 1px solid #f4f4f5; padding-bottom: 16px; text-align: center;">
+                        New Portfolio Connection Message
+                    </h2>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #71717a; letter-spacing: 0.05em;">From</p>
+                        <p style="margin: 0; font-size: 15px; color: #09090b; font-weight: 600;">${senderName}</p>
+                        <p style="margin: 4px 0 0 0; font-size: 13px; color: #3b82f6;">${senderEmail}</p>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #71717a; letter-spacing: 0.05em;">Message Body</p>
+                        <div style="background-color: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 12px; padding: 20px; color: #09090b; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${message}</div>
+                    </div>
+
+                    <p style="color: #a1a1aa; font-size: 10px; margin-top: 24px; text-align: center; border-top: 1px solid #f4f4f5; padding-top: 16px; letter-spacing: 0.05em; text-transform: uppercase;">
+                        Portfolio Auto-Mailer
+                    </p>
+                </div>
+            </div>
+        `;
+
+        await resend.emails.send({
+            from: 'Portfolio Contact <onboarding@resend.dev>',
+            to: 'littlehrithik9594@gmail.com',
+            subject: `New Connection from ${senderName} via Portfolio`,
+            html: htmlTemplate
+        });
+        return true;
+    } catch (error) {
+        console.error('Error sending contact email with Resend:', error);
+        return false;
+    }
+};
