@@ -59,33 +59,74 @@ export default function Contact() {
 
             <div className="space-y-4">
               {/* Email Card */}
-              <div className="p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 transition-colors">
-                <span className="text-xl">✉️</span>
-                <div>
-                  <h4 className="text-xs font-mono text-[#a3a3a3] uppercase">Email</h4>
-                  <a href="mailto:littlehrithik9594@gmail.com" className="text-sm font-semibold text-white hover:text-[#3b82f6] transition-colors">
-                    littlehrithik9594@gmail.com
-                  </a>
-                </div>
-              </div>
+              {/* Email Card */}
+<div className="group p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 hover:bg-[#161616]/70 transition-all duration-300">
+  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#3b82f6]/10 text-[#3b82f6] group-hover:scale-110 transition-transform duration-300">
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.918l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91A2.25 2.25 0 0 1 2.25 6.993V6.75"
+      />
+    </svg>
+  </div>
 
-              {/* Location Card */}
-              <div className="p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4">
-                <span className="text-xl">📍</span>
-                <div>
-                  <h4 className="text-xs font-mono text-[#a3a3a3] uppercase">Location</h4>
-                  <span className="text-sm font-semibold text-white">
-                    Hyderabad, Telangana, India
-                  </span>
-                </div>
-              </div>
+  <div>
+    <h4 className="text-xs font-mono text-[#737373] uppercase tracking-wider">
+      Email
+    </h4>
+
+    <a
+      href="mailto:hrithikmishra9594@gmail.com"
+      className="text-sm font-semibold text-white hover:text-[#3b82f6] transition-colors"
+    >
+      hrithikmishra9594@gmail.com
+    </a>
+  </div>
+</div>
+
+{/* Location Card */}
+<div className="group p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 hover:bg-[#161616]/70 transition-all duration-300">
+  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#3b82f6]/10 text-[#3b82f6] group-hover:scale-110 transition-transform duration-300">
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"
+      />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  </div>
+
+  <div>
+    <h4 className="text-xs font-mono text-[#737373] uppercase tracking-wider">
+      Location
+    </h4>
+
+    <span className="text-sm font-semibold text-white">
+      Mumbai, Maharashtra, India
+    </span>
+  </div>
+</div>
 
               {/* Social Links Card */}
               <div className="p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex flex-col gap-3">
                 <h4 className="text-xs font-mono text-[#a3a3a3] uppercase">Find me on</h4>
                 <div className="flex gap-3">
                   <a
-                    href="https://github.com"
+                    href="https://github.com/hrithik41"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-1.5 rounded-md border border-[#262626] bg-[#0a0a0a] text-xs font-mono text-[#a3a3a3] hover:text-white hover:border-white/20 transition-all"
@@ -93,12 +134,20 @@ export default function Contact() {
                     GitHub
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/hrithik41/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-1.5 rounded-md border border-[#262626] bg-[#0a0a0a] text-xs font-mono text-[#a3a3a3] hover:text-white hover:border-blue-500/20 transition-all"
                   >
                     LinkedIn
+                  </a>
+                  <a
+                    href="https://www.instagram.com/hrithik.41"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 rounded-md border border-[#262626] bg-[#0a0a0a] text-xs font-mono text-[#a3a3a3] hover:text-white hover:border-pink-500/20 transition-all"
+                  >
+                    Instagram
                   </a>
                 </div>
               </div>
