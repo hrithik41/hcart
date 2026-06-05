@@ -51,7 +51,7 @@ export default function About() {
         {/* Section Header */}
         <div className="mb-16">
           <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
-            // 01. About
+            01. About
           </span>
 
           <h2 className="text-3xl font-bold text-white mt-1">

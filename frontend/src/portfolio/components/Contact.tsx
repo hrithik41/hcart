@@ -36,20 +36,20 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative pt-20 pb-0 bg-[#0a0a0a] border-t border-[#262626] overflow-hidden">
-      
+
       {/* Top half: Contact Form & Info Cards */}
       <div className="max-w-6xl mx-auto px-6 mb-20 relative z-10">
-        
+
         {/* Section Header */}
         <div className="mb-16">
           <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
-            // 06. Get In Touch
+            06. Get In Touch
           </span>
           <h2 className="text-3xl font-bold text-white mt-1">Let's Connect</h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left: Contact Info */}
           <div className="lg:col-span-5 space-y-6">
             <h3 className="text-lg font-bold text-white font-mono">Reach out directly</h3>
@@ -60,66 +60,66 @@ export default function Contact() {
             <div className="space-y-4">
               {/* Email Card */}
               {/* Email Card */}
-<div className="group p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 hover:bg-[#161616]/70 transition-all duration-300">
-  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#3b82f6]/10 text-[#3b82f6] group-hover:scale-110 transition-transform duration-300">
-    <svg
-      className="w-5 h-5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.918l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91A2.25 2.25 0 0 1 2.25 6.993V6.75"
-      />
-    </svg>
-  </div>
+              <div className="group p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 hover:bg-[#161616]/70 transition-all duration-300">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#3b82f6]/10 text-[#3b82f6] group-hover:scale-110 transition-transform duration-300">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.918l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91A2.25 2.25 0 0 1 2.25 6.993V6.75"
+                    />
+                  </svg>
+                </div>
 
-  <div>
-    <h4 className="text-xs font-mono text-[#737373] uppercase tracking-wider">
-      Email
-    </h4>
+                <div>
+                  <h4 className="text-xs font-mono text-[#737373] uppercase tracking-wider">
+                    Email
+                  </h4>
 
-    <a
-      href="mailto:hrithikmishra9594@gmail.com"
-      className="text-sm font-semibold text-white hover:text-[#3b82f6] transition-colors"
-    >
-      hrithikmishra9594@gmail.com
-    </a>
-  </div>
-</div>
+                  <a
+                    href="mailto:hrithikmishra9594@gmail.com"
+                    className="text-sm font-semibold text-white hover:text-[#3b82f6] transition-colors"
+                  >
+                    hrithikmishra9594@gmail.com
+                  </a>
+                </div>
+              </div>
 
-{/* Location Card */}
-<div className="group p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 hover:bg-[#161616]/70 transition-all duration-300">
-  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#3b82f6]/10 text-[#3b82f6] group-hover:scale-110 transition-transform duration-300">
-    <svg
-      className="w-5 h-5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"
-      />
-      <circle cx="12" cy="10" r="2.5" />
-    </svg>
-  </div>
+              {/* Location Card */}
+              <div className="group p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex items-center gap-4 hover:border-[#3b82f6]/40 hover:bg-[#161616]/70 transition-all duration-300">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#3b82f6]/10 text-[#3b82f6] group-hover:scale-110 transition-transform duration-300">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"
+                    />
+                    <circle cx="12" cy="10" r="2.5" />
+                  </svg>
+                </div>
 
-  <div>
-    <h4 className="text-xs font-mono text-[#737373] uppercase tracking-wider">
-      Location
-    </h4>
+                <div>
+                  <h4 className="text-xs font-mono text-[#737373] uppercase tracking-wider">
+                    Location
+                  </h4>
 
-    <span className="text-sm font-semibold text-white">
-      Mumbai, Maharashtra, India
-    </span>
-  </div>
-</div>
+                  <span className="text-sm font-semibold text-white">
+                    Mumbai, Maharashtra, India
+                  </span>
+                </div>
+              </div>
 
               {/* Social Links Card */}
               <div className="p-4 rounded-xl border border-[#262626] bg-[#161616]/40 flex flex-col gap-3">
@@ -203,11 +203,10 @@ export default function Contact() {
 
               {statusMsg && (
                 <div
-                  className={`text-xs font-mono text-center p-2.5 rounded border ${
-                    isSuccess
+                  className={`text-xs font-mono text-center p-2.5 rounded border ${isSuccess
                       ? "border-green-500/20 bg-green-500/5 text-green-500"
                       : "border-red-500/20 bg-red-500/5 text-red-500"
-                  }`}
+                    }`}
                 >
                   {statusMsg}
                 </div>
@@ -225,7 +224,7 @@ export default function Contact() {
         <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
           {/* Moon */}
           <div className="absolute top-12 right-24 w-12 h-12 rounded-full bg-white/40 blur-[2px]" />
-          
+
           {/* Mountains/Hills silhouettes */}
           <svg className="absolute bottom-0 w-full h-32 text-[#080d1a]" preserveAspectRatio="none" viewBox="0 0 100 100">
             <polygon points="0,100 0,60 25,80 50,55 75,70 100,50 100,100" fill="currentColor" />
@@ -266,7 +265,7 @@ export default function Contact() {
           © {new Date().getFullYear()} Hrithik. All rights reserved.
         </div>
       </div>
-      
+
     </section>
   );
 }

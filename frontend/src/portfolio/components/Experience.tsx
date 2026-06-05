@@ -82,14 +82,14 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 bg-[#0a0a0a] border-t border-[#262626] relative">
       <div className="max-w-6xl mx-auto px-6">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
+
           {/* Left Column: Work Experience Timeline */}
           <div>
             <div className="mb-12">
               <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
-                // 04. History
+                04. History
               </span>
               <h2 className="text-3xl font-bold text-white mt-1">Experience</h2>
             </div>
@@ -99,7 +99,7 @@ export default function Experience() {
                 <div key={idx} className="relative group">
                   {/* Timeline bullet */}
                   <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[#0a0a0a] bg-[#262626] group-hover:bg-[#3b82f6] group-hover:scale-125 transition-all duration-300" />
-                  
+
                   <div className="space-y-2">
                     <div className="flex justify-between items-start gap-4 flex-wrap">
                       <div>
@@ -112,7 +112,7 @@ export default function Experience() {
                         {work.period}
                       </span>
                     </div>
-                    
+
                     <p className="text-xs text-[#a3a3a3] leading-relaxed">
                       {work.description}
                     </p>
@@ -137,7 +137,7 @@ export default function Experience() {
           <div>
             <div className="mb-12">
               <span className="text-xs font-mono tracking-widest text-pink-500 uppercase">
-                // 05. Milestones
+                05. Milestones
               </span>
               <h2 className="text-3xl font-bold text-white mt-1">Hackathons & Awards</h2>
             </div>
@@ -150,11 +150,10 @@ export default function Experience() {
                     key={idx}
                     onMouseEnter={() => setActiveAchievement(idx)}
                     onMouseLeave={() => setActiveAchievement(null)}
-                    className={`p-5 rounded-xl border transition-all duration-300 cursor-default ${
-                      isHovered
-                        ? "border-pink-500/40 bg-[#161616]/80 shadow-lg shadow-pink-500/5 translate-x-1"
-                        : "border-[#262626] bg-[#161616]/40"
-                    }`}
+                    className={`p-5 rounded-xl border transition-all duration-300 cursor-default ${isHovered
+                      ? "border-pink-500/40 bg-[#161616]/80 shadow-lg shadow-pink-500/5 translate-x-1"
+                      : "border-[#262626] bg-[#161616]/40"
+                      }`}
                   >
                     <div className="flex justify-between items-start gap-4 flex-wrap mb-1">
                       <h4 className="font-bold text-white text-sm group-hover:text-pink-500">
@@ -166,12 +165,11 @@ export default function Experience() {
                     </div>
                     <p className="text-xs text-[#a3a3a3] font-semibold">{award.event}</p>
                     <p className="text-[10px] text-[#a3a3a3]/60 font-mono mb-2">{award.organizer}</p>
-                    
+
                     {/* Collapsible detail text showing on hover */}
                     <div
-                      className={`text-xs text-[#a3a3a3] leading-relaxed transition-all duration-300 overflow-hidden ${
-                        isHovered ? "max-h-20 opacity-100 mt-2" : "max-h-0 opacity-0"
-                      }`}
+                      className={`text-xs text-[#a3a3a3] leading-relaxed transition-all duration-300 overflow-hidden ${isHovered ? "max-h-20 opacity-100 mt-2" : "max-h-0 opacity-0"
+                        }`}
                     >
                       {award.details}
                     </div>
