@@ -4,64 +4,93 @@ import React from "react";
 
 export default function About() {
   const coreAreas = [
-    "Backend Architecture",
-    "API Development (REST / RPC)",
-    "Payment Integration (Razorpay)",
-    "Database Management (MySQL / Prisma)",
-    "Security & Authentication",
-    "Next.js & React Frontend",
-    "TypeScript & Express",
-    "Redis Caching Systems",
+    "System Architecture",
+    "Full-Stack Development",
+    "Next.js & React",
+    "Node.js & Express",
+    "TypeScript",
+    "REST APIs",
+    "Prisma ORM",
+    "MySQL & PostgreSQL",
+    "Redis Caching",
+    "Authentication & Security",
+    "Payment Integration",
+    "Performance Optimization",
   ];
 
-  const educationTimeline = [
+  const journeyTimeline = [
     {
-      degree: "B.Tech in Computer Science and Engineering",
-      institution: "Keshav Memorial Institute Of Technology",
-      period: "Nov 2022 - Feb 2026",
-      details: "Focused on Software Engineering, Database Management Systems, and Web Application Security. CGPA: 8.5/10.0",
+      degree: "Software Development Intern",
+      institution: "Enpointe Technologies",
+      period: "2025 - Present",
+      details:
+        "Contributing to modern web applications, backend services, API integrations, database-driven solutions, and scalable software systems. Working with production-ready development practices and secure application architectures.",
     },
     {
-      degree: "Intermediate Education (MPC)",
-      institution: "Keshav Smarak Junior College",
-      period: "2020 - 2022",
-      details: "Specialized in Mathematics, Physics, and Chemistry. Score: 977/1000",
+      degree: "Bachelor of Science in Information Technology",
+      institution: "Niranjana's Majethia College of Commerce and Science",
+      period: "2020 - 2023",
+      details:
+        "Graduated with a CGPA of 7.80. Built strong foundations in software engineering, database systems, networking, object-oriented programming, and modern web technologies.",
     },
     {
-      degree: "Secondary School Certificate",
-      institution: "Gowtham Model School",
+      degree: "Higher Secondary Certificate (Science)",
+      institution: "Durgadevi Saraf College of Commerce and Science",
       period: "2020",
-      details: "General high school curriculum. CGPA: 10.0/10.0",
+      details:
+        "Completed Science stream with 79%, developing strong analytical and problem-solving skills through Mathematics, Physics, and Chemistry.",
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-[#0a0a0a] border-t border-[#262626] relative">
+    <section
+      id="about"
+      className="py-20 bg-[#0a0a0a] border-t border-[#262626] relative"
+    >
       <div className="max-w-6xl mx-auto px-6">
-        
         {/* Section Header */}
         <div className="mb-16">
           <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
-            // 01. About Me
+            // 01. About
           </span>
-          <h2 className="text-3xl font-bold text-white mt-1">Who I Am & Education</h2>
+
+          <h2 className="text-3xl font-bold text-white mt-1">
+            Building Technology That Creates Impact
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Intro & Badges */}
+          {/* Left Column */}
           <div className="lg:col-span-6 space-y-6">
             <p className="text-sm sm:text-base text-[#a3a3a3] leading-relaxed">
-              I am a software engineer focused on building secure, robust, and highly performant web applications. With strong foundations in backend systems and transaction logic, I enjoy solving complex scalability problems, configuring secure payment workflows, and bringing interfaces to life with premium UI styling.
+              A Software Developer passionate
+              about building scalable web applications, secure backend systems,
+              and modern digital products. I enjoy transforming complex ideas
+              into reliable, high-performance software solutions through clean
+              architecture and intuitive user experiences.
             </p>
+
             <p className="text-sm sm:text-base text-[#a3a3a3] leading-relaxed">
-              I love engineering workflows that connect robust APIs, relational database queries, and caching layers to create lightning-fast response times. My goals are always aligned with building clean, maintainable code architectures.
+              My expertise spans React, Next.js, Node.js, TypeScript, Prisma,
+              relational databases, authentication systems, payment
+              integrations, and performance optimization. I focus on creating
+              maintainable software that balances technical excellence with real
+              business value.
+            </p>
+
+            <p className="text-sm sm:text-base text-[#a3a3a3] leading-relaxed">
+              Beyond development, I'm passionate about entrepreneurship,
+              product innovation, and building technology-driven ventures. My
+              goal is to create impactful digital products that solve
+              real-world problems while delivering exceptional user
+              experiences.
             </p>
 
             <div className="space-y-3">
               <h3 className="text-sm font-semibold text-white uppercase font-mono tracking-wider">
-                Core Competencies:
+                Core Expertise
               </h3>
+
               <div className="flex flex-wrap gap-2">
                 {coreAreas.map((area) => (
                   <span
@@ -75,34 +104,40 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: Academic Timeline */}
+          {/* Right Column */}
           <div className="lg:col-span-6 space-y-6 relative pl-6 border-l border-[#262626]">
             <h3 className="text-sm font-semibold text-white uppercase font-mono tracking-wider mb-8">
-              Education Timeline
+              Professional Journey
             </h3>
 
-            {educationTimeline.map((item, idx) => (
+            {journeyTimeline.map((item, idx) => (
               <div key={idx} className="relative group mb-8 last:mb-0">
                 {/* Timeline Dot Indicator */}
                 <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[#0a0a0a] bg-[#262626] group-hover:bg-[#3b82f6] group-hover:scale-125 transition-all duration-300" />
-                
-                {/* Education card */}
+
+                {/* Timeline Card */}
                 <div className="p-5 rounded-xl border border-[#262626] bg-[#161616]/40 hover:border-[#262626]/80 hover:bg-[#161616]/70 transition-all duration-300">
                   <div className="flex justify-between items-start gap-4 flex-wrap mb-2">
                     <h4 className="font-bold text-white text-base group-hover:text-[#3b82f6] transition-colors">
                       {item.degree}
                     </h4>
+
                     <span className="text-[10px] font-mono text-[#a3a3a3]">
                       {item.period}
                     </span>
                   </div>
-                  <p className="text-xs text-[#3b82f6] font-medium mb-2">{item.institution}</p>
-                  <p className="text-xs text-[#a3a3a3] leading-relaxed">{item.details}</p>
+
+                  <p className="text-xs text-[#3b82f6] font-medium mb-2">
+                    {item.institution}
+                  </p>
+
+                  <p className="text-xs text-[#a3a3a3] leading-relaxed">
+                    {item.details}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
