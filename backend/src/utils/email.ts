@@ -60,11 +60,12 @@ export const sendOTPEmail = async (toEmail: string, otp: string): Promise<boolea
         `;
 
         await resend.emails.send({
-            from: 'Authentication Services <onboarding@resend.dev>',
+            from: process.env.SENDER_EMAIL!,
             to: toEmail,
             subject: "Verification Code from Hrithik", // Cleaned up subject line
             html: htmlTemplate
         });
+        console.log("OTP sent successfully", );
         return true;
     } catch (error) {
         console.error('Error sending email with Resend:', error);
@@ -101,7 +102,7 @@ export const sendContactEmail = async (senderName: string, senderEmail: string, 
         `;
 
         await resend.emails.send({
-            from: 'Portfolio Contact <onboarding@resend.dev>',
+            from: process.env.CONTACT_SENDER!,
             to: 'littlehrithik9594@gmail.com',
             subject: `New Connection from ${senderName} via Portfolio`,
             html: htmlTemplate
