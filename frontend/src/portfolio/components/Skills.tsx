@@ -37,19 +37,19 @@ export default function Skills() {
       { name: "Tailwind CSS", level: "Advanced", icon: "https://cdn.simpleicons.org/tailwindcss" },
       { name: "TypeScript", level: "Advanced", icon: "https://cdn.simpleicons.org/typescript" },
       { name: "HTML5", level: "Advanced", icon: "https://cdn.simpleicons.org/html5" },
-      { name: "CSS3", level: "Advanced", icon: "https://cdn.simpleicons.org/css3" },
+      { name: "CSS3", level: "Advanced", icon: "https://cdn.simpleicons.org/css" }, // FIXED
     ],
     languages: [
       { name: "JavaScript", level: "Advanced", icon: "https://cdn.simpleicons.org/javascript" },
       { name: "TypeScript", level: "Advanced", icon: "https://cdn.simpleicons.org/typescript" },
       { name: "Python", level: "Intermediate", icon: "https://cdn.simpleicons.org/python" },
-      { name: "Java", level: "Intermediate", icon: "https://cdn.simpleicons.org/java" },
-      { name: "SQL", level: "Advanced", icon: "https://cdn.simpleicons.org/sqlite" },
+      { name: "Java", level: "Intermediate", icon: "https://cdn.simpleicons.org/openjdk" }, // FIXED
+      { name: "SQL", level: "Advanced", icon: "https://cdn.simpleicons.org/mysql" },
     ],
     cloud: [
       { name: "MySQL", level: "Advanced", icon: "https://cdn.simpleicons.org/mysql" },
       { name: "PostgreSQL", level: "Intermediate", icon: "https://cdn.simpleicons.org/postgresql" },
-      { name: "AWS", level: "Intermediate", icon: "https://cdn.simpleicons.org/amazonaws" },
+      { name: "AWS", level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
       { name: "Docker", level: "Intermediate", icon: "https://cdn.simpleicons.org/docker" },
       { name: "CI / CD", level: "Intermediate", icon: "https://cdn.simpleicons.org/githubactions" },
       { name: "Git", level: "Advanced", icon: "https://cdn.simpleicons.org/git" },
@@ -75,7 +75,7 @@ export default function Skills() {
   return (
     <section id="skills" className="py-20 bg-[#0a0a0a] border-t border-[#262626] relative">
       <div className="max-w-6xl mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="mb-12">
           <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
@@ -85,20 +85,21 @@ export default function Skills() {
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex flex-wrap gap-2 mb-10 border-b border-[#262626] pb-4">
-          {categories.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 text-xs font-semibold font-mono rounded-md transition-all duration-300 ${
-                activeTab === tab.id
+        <div className="mb-10 border-b border-[#262626] pb-4 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 w-max md:w-auto">
+            {categories.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`whitespace-nowrap px-4 py-2 text-xs font-semibold font-mono rounded-md transition-all duration-300 ${activeTab === tab.id
                   ? "bg-[#3b82f6] text-white shadow-lg shadow-blue-500/25"
-                  : "border border-[#262626] bg-[#161616]/40 text-[#a3a3a3] hover:text-white hover:border-[#262626]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+                  : "border border-[#262626] bg-[#161616]/40 text-[#a3a3a3] hover:text-white"
+                  }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Skills Cards Grid */}
