@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import About from "./components/About";
@@ -12,6 +12,13 @@ import StartupAnimation from "./components/StartupAnimation";
 
 export default function Portfolio() {
   const [hasBooted, setHasBooted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   return (
     <div className="bg-[#0a0a0a] min-h-screen text-white flex flex-col font-sans select-none antialiased">
