@@ -24,7 +24,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-20 bg-[#0a0a0a] overflow-hidden"
+      className="relative min-h-screen lg:flex lg:items-center lg:justify-center pt-28 pb-20 bg-[#0a0a0a] overflow-hidden"
     >
       {/* Background Profile Image - Desktop Only (Hidden on Mobile to prevent text overlap) */}
       <div className="hidden lg:block absolute inset-0 z-0 overflow-hidden">
@@ -53,10 +53,10 @@ export default function HeroSection() {
 
       {/* Hero content container */}
       <div className="max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        
+
         {/* Left Column: Hero Content Text (7 columns on desktop) */}
         <div className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start text-center lg:text-left space-y-6">
-          
+
           {/* Visitor Count Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#262626] bg-[#161616]/80 backdrop-blur-md text-[11px] font-mono text-[#a3a3a3]">
             <svg
@@ -113,7 +113,7 @@ export default function HeroSection() {
         {/* Right Column: Holds the profile image on Mobile (below text) and acts as a spacer on Desktop */}
         <div className="lg:col-span-5 w-full flex justify-center mt-8 lg:mt-0 z-10">
           {/* Mobile Image - only visible on mobile/tablet (below text block), cropped & blended */}
-          <div className="block lg:hidden relative w-64 h-64 mx-auto overflow-hidden bg-transparent">
+          <div className="block lg:hidden relative w-84 h-64 mx-auto overflow-hidden bg-transparent">
             <Image
               src="/profile.png"
               alt="Developer Profile"
@@ -136,7 +136,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer relative z-10" onClick={handleScrollDown}>
+      <div className="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer relative z-10" onClick={handleScrollDown}>
         <span className="text-[10px] font-mono tracking-widest text-[#a3a3a3] uppercase opacity-60 hover:opacity-100 transition-opacity">
           Explore my work
         </span>
