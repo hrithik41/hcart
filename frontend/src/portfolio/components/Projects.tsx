@@ -27,7 +27,7 @@ export default function Projects() {
       ],
       tech: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "CrewAI"],
       color: "from-blue-600/30 via-indigo-600/20 to-transparent",
-      link: "https://github.com",
+      link: "https://github.com/hrithik41",
     },
     {
       title: "Vercel Clone",
@@ -41,7 +41,7 @@ export default function Projects() {
       ],
       tech: ["TypeScript", "Node.js", "Redis", "AWS S3", "Docker", "Vite"],
       color: "from-red-600/30 via-rose-600/20 to-transparent",
-      link: "https://github.com",
+      link: "https://github.com/hrithik41",
     },
     {
       title: "SiteEase",
@@ -55,7 +55,7 @@ export default function Projects() {
       ],
       tech: ["JavaScript", "HTML5", "CSS3", "Chrome APIs", "Tailwind CSS"],
       color: "from-emerald-600/30 via-teal-600/20 to-transparent",
-      link: "https://github.com",
+      link: "https://github.com/hrithik41",
     },
   ];
 
