@@ -49,7 +49,7 @@ export default function Skills() {
     cloud: [
       { name: "MySQL", level: "Advanced", icon: "https://cdn.simpleicons.org/mysql" },
       { name: "PostgreSQL", level: "Intermediate", icon: "https://cdn.simpleicons.org/postgresql" },
-      { name: "AWS", level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
+      { name: "AWS", level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
       { name: "Docker", level: "Intermediate", icon: "https://cdn.simpleicons.org/docker" },
       { name: "CI / CD", level: "Intermediate", icon: "https://cdn.simpleicons.org/githubactions" },
       { name: "Git", level: "Advanced", icon: "https://cdn.simpleicons.org/git" },
@@ -79,7 +79,7 @@ export default function Skills() {
         {/* Section Header */}
         <div className="mb-12">
           <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
-            // 02. Technologies
+            02. Technologies
           </span>
           <h2 className="text-3xl font-bold text-white mt-1">My Tech Stack</h2>
         </div>

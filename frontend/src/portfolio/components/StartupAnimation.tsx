@@ -23,15 +23,15 @@ export default function StartupAnimation({ onComplete }: StartupAnimationProps) 
         currentIdx++;
       } else {
         clearInterval(typingInterval);
-        
+
         // Text is fully typed. Wait 1 second, then trigger the glitch effect.
         setTimeout(() => {
           setIsGlitching(true);
-          
+
           // Glitch runs for 600ms, then trigger the fade out.
           setTimeout(() => {
             setIsFadingOut(true);
-            
+
             // Fade-out transition takes 700ms, then signal completion.
             setTimeout(() => {
               onComplete();
@@ -54,17 +54,15 @@ export default function StartupAnimation({ onComplete }: StartupAnimationProps) 
 
   return (
     <div
-      className={`fixed inset-0 bg-[#0a0a0a] flex items-center justify-center z-50 select-none transition-all duration-700 ${
-        isFadingOut ? "opacity-0 pointer-events-none scale-98" : "opacity-100"
-      }`}
+      className={`fixed inset-0 bg-[#0a0a0a] flex items-center justify-center z-50 select-none transition-all duration-700 ${isFadingOut ? "opacity-0 pointer-events-none scale-98" : "opacity-100"
+        }`}
     >
       <div className="absolute inset-0 bg-dot-grid opacity-25" />
-      
+
       {/* Glitch-slicing text container */}
       <div
-        className={`relative max-w-lg w-[90%] text-center px-4 font-mono ${
-          isGlitching ? "animate-glitch" : ""
-        }`}
+        className={`relative max-w-lg w-[90%] text-center px-4 font-mono ${isGlitching ? "animate-glitch" : ""
+          }`}
       >
         {/* Color duplication layers for horizontal chromatic aberration glitch */}
         {isGlitching && (
@@ -87,9 +85,8 @@ export default function StartupAnimation({ onComplete }: StartupAnimationProps) 
           <span className="text-[#22c55e]">➜</span>{" "}
           <span className="text-[#a3a3a3]">~</span> {typedText}
           <span
-            className={`inline-block w-2.5 h-4 ml-1 bg-[#3b82f6] align-middle ${
-              showCursor ? "opacity-100" : "opacity-0"
-            }`}
+            className={`inline-block w-2.5 h-4 ml-1 bg-[#3b82f6] align-middle ${showCursor ? "opacity-100" : "opacity-0"
+              }`}
           />
         </div>
       </div>

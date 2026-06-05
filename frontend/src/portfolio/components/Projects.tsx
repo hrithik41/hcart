@@ -62,11 +62,11 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 bg-[#0a0a0a] border-t border-[#262626] relative">
       <div className="max-w-6xl mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="mb-16">
           <span className="text-xs font-mono tracking-widest text-[#3b82f6] uppercase">
-            // 03. Selected Work
+            03. Selected Work
           </span>
           <h2 className="text-3xl font-bold text-white mt-1">Stuff I Built</h2>
         </div>
@@ -80,23 +80,22 @@ export default function Projects() {
                 key={idx}
                 className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
               >
-                
+
                 {/* Visual Preview Block (Alternating Column Order) */}
                 <div
-                  className={`lg:col-span-6 flex justify-center ${
-                    isEven ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`lg:col-span-6 flex justify-center ${isEven ? "lg:order-1" : "lg:order-2"
+                    }`}
                 >
                   <div className="relative w-full aspect-video rounded-xl border border-[#262626] bg-[#161616] p-1 overflow-hidden group">
                     {/* Color accents gradient backdrop */}
                     <div
                       className={`absolute inset-0 bg-gradient-to-tr ${project.color} opacity-40 group-hover:opacity-60 transition-opacity duration-500`}
                     />
-                    
+
                     {/* Outer frame styling */}
                     <div className="w-full h-full rounded-lg bg-[#0a0a0a]/90 backdrop-blur-sm border border-[#262626] p-6 flex flex-col justify-between overflow-hidden relative">
                       <div className="absolute inset-0 bg-dot-grid opacity-20" />
-                      
+
                       {/* Fake browser bar */}
                       <div className="flex justify-between items-center pb-4 border-b border-[#262626]/60 relative z-10">
                         <div className="flex gap-1.5">
@@ -134,9 +133,8 @@ export default function Projects() {
 
                 {/* Text Content Block */}
                 <div
-                  className={`lg:col-span-6 flex flex-col space-y-4 ${
-                    isEven ? "lg:order-2" : "lg:order-1"
-                  }`}
+                  className={`lg:col-span-6 flex flex-col space-y-4 ${isEven ? "lg:order-2" : "lg:order-1"
+                    }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-xl font-bold text-white font-mono">{project.title}</span>
@@ -150,7 +148,7 @@ export default function Projects() {
                       <ArrowUpRight className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200" />
                     </a>
                   </div>
-                  
+
                   <h3 className="text-sm font-semibold text-[#3b82f6] font-mono">
                     {project.subtitle}
                   </h3>
@@ -163,7 +161,19 @@ export default function Projects() {
                     {project.bullets.map((bullet, bulletIdx) => (
                       <li key={bulletIdx} className="flex items-start gap-2 text-xs text-[#a3a3a3]">
                         {/* Sparkle list bullet icon */}
-                        <Sparkles className="w-4 h-4 text-[#3b82f6] mt-0.5 flex-shrink-0" />
+                        <svg
+                          className="w-4 h-4 text-[#3b82f6] mt-0.5 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M8 9l-4 3 4 3M16 9l4 3-4 3"
+                          />
+                        </svg>
                         <span className="leading-relaxed">{bullet}</span>
                       </li>
                     ))}
