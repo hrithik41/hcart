@@ -121,20 +121,20 @@ function VerifyOtpContent() {
                 <div className="w-14 h-14 bg-zinc-900 rounded-3xl flex items-center justify-center shadow-2xl shadow-zinc-200 mb-6 -rotate-3">
                     <div className="w-5 h-5 bg-white rounded-sm rotate-45"></div>
                 </div>
-                <h1 className="text-4xl font-light font-black text-zinc-900 tracking-tighter uppercase mb-2">Verify Access</h1>
+                <h1 className="text-4xl font-black text-zinc-900 tracking-tighter uppercase mb-2">Verify Access</h1>
                 <p className="text-zinc-400 font-light text-xs uppercase tracking-widest">Enter the 4-digit code sent to:</p>
                 <p className="text-zinc-600 font-medium text-xs mt-2 truncate max-w-xs">{email}</p>
             </div>
 
             <div className="bg-white p-10 rounded-4xl border border-zinc-200 shadow-2xl shadow-zinc-200/50 backdrop-blur-sm">
                 {error && (
-                    <div className="mb-8 p-4 bg-red-50 border border-red-100 text-red-600 text-[10px] font-light font-black uppercase tracking-widest rounded-2xl text-center">
+                    <div className="mb-8 p-4 bg-red-50 border border-red-100 text-red-600 text-[10px] font-black uppercase tracking-widest rounded-2xl text-center">
                         {error}
                     </div>
                 )}
 
                 {success && (
-                    <div className="mb-8 p-4 bg-green-50 border border-green-100 text-green-600 text-[10px] font-light font-black uppercase tracking-widest rounded-2xl text-center">
+                    <div className="mb-8 p-4 bg-green-50 border border-green-100 text-green-600 text-[10px] font-black uppercase tracking-widest rounded-2xl text-center">
                         {success}
                     </div>
                 )}
@@ -161,7 +161,7 @@ function VerifyOtpContent() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-zinc-900 hover:bg-zinc-800 text-white text-[11px] font-light font-black uppercase tracking-[0.3em] py-5 rounded-2xl transition-all active:scale-[0.98] disabled:opacity-50 shadow-xl shadow-zinc-200 flex items-center justify-center gap-3"
+                        className="w-full bg-zinc-900 hover:bg-zinc-800 text-white text-[11px] font-black uppercase tracking-[0.3em] py-5 rounded-2xl transition-all active:scale-[0.98] disabled:opacity-50 shadow-xl shadow-zinc-200 flex items-center justify-center gap-3"
                     >
                         {loading ? (
                             <Loader2 className="animate-spin" size={18} />
@@ -192,7 +192,7 @@ function VerifyOtpContent() {
             </div>
 
             <div className="mt-12 text-center space-y-4">
-                <p className="text-zinc-400 font-light text-[10px] font-light uppercase tracking-widest">
+                <p className="text-zinc-400 text-[10px] font-light uppercase tracking-widest">
                     Wrong email?{" "}
                     <Link href="/register" className="text-zinc-900 hover:underline underline-offset-4 decoration-2">
                         Change Details

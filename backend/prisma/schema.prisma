@@ -19,7 +19,7 @@ model transaction {
   reason            String?
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
-  user              user               @relation(fields: [userId], references: [id], map: "Transaction_userId_fkey")
+  user              user               @relation(fields: [userId], references: [id], map: "Transaction_userId_fkey", onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId], map: "Transaction_userId_fkey")
 }
