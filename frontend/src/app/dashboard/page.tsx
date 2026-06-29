@@ -74,7 +74,7 @@ export default function Dashboard() {
                 key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
                 amount: order.amount,
                 currency: order.currency,
-                name: "Financely",
+                name: "HCart",
                 description: "Purchase",
                 order_id: order.id,
                 handler: async function (response: any) {
@@ -133,7 +133,7 @@ export default function Dashboard() {
                         {/* <div className="w-10 h-10 bg-zinc-900 rounded-2xl flex items-center justify-center shadow-xl shadow-zinc-200 rotate-3 group hover:rotate-0 transition-transform duration-500 cursor-pointer">
                             <div className="w-4 h-4 bg-white rounded-sm rotate-45"></div>
                         </div> */}
-                        <span className="text-4xl font-light tracking-tighter uppercase">Financely</span>
+                        <span className="text-4xl font-light tracking-tighter uppercase">hcart</span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -238,7 +238,7 @@ export default function Dashboard() {
 
             <footer className="max-w-7xl mx-auto px-6 py-20 border-t border-zinc-200 text-center">
                 <p className="text-[10px] font-light text-zinc-300 uppercase tracking-[0.3em]">
-                    &copy; 2026 Financely Inc. Built with Precision.
+                    &copy; 2026 HCart Inc. Built with Precision.
                 </p>
             </footer>
         </div>

@@ -59,7 +59,7 @@ export default function CartPage() {
                 key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
                 amount: amount,
                 currency: "INR",
-                name: "Financely",
+                name: "HCart",
                 description: "Premium Product Purchase",
                 image: "/logo.png",
                 order_id: order_id,

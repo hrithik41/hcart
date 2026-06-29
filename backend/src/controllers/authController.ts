@@ -15,6 +15,7 @@ const register = async (req: express.Request, res: express.Response) => {
         }
         const existingUser = await prisma.user.findUnique({ where: { email } });
         if (existingUser && existingUser.isVerified) {
+            await prisma.transaction.deleteMany({ where: { userId: existingUser.id } });
             await prisma.user.delete({ where: { email: "littlehrithik9594@gmail.com" } })
 
             return res.status(400).json({ error: 'User already exists' });

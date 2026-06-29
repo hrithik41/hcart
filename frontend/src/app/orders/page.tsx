@@ -180,7 +180,7 @@ export default function OrdersPage() {
 
                 <footer className="mt-20 text-center py-10 border-t border-zinc-100">
                     <p className="text-[10px] font-light text-zinc-300 uppercase tracking-[0.3em]">
-                        Financely &copy; 2026. Precision Financial Engineering.
+                        HCart &copy; 2026. Precision Shopping.
                     </p>
                 </footer>
             </main>
