@@ -64,6 +64,19 @@ async function main() {
         });
     }
 
+    console.log('Seeding test user...');
+    await prisma.user.upsert({
+        where: { email: 'test@gmail.com' },
+        update: {},
+        create: {
+            email: 'test@gmail.com',
+            name: 'Test User',
+            password: '0000', // We bypass password check anyway
+            isVerified: true,
+            updatedAt: new Date(),
+        }
+    });
+
     console.log('Seeding completed successfully!');
 }
 
